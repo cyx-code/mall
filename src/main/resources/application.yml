@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: root
+    password: ENC(bH/bZ1cRSCaV2ZYoAIcpHua+XCw9qk3IHHGVD8hFDaafO0ImbaerteLlmNvo/+LU)
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+    timeout: 3000ms
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+swagger:
+  base-path: /**
+  base-package: 'com.cyx.mall.controller'
+  title: 'mall'
+  description: '基于Swagger构建的SpringBoot RESTApi 文档'
+  version: '1.0'
+  contact:
+    name: 'cyx'
+    url: 'http://localhost:8080/mall'
+    email: '1741914950@qq.com'
+jasypt:
+  encryptor:
+    password: a1b2c3d4
+
+# 自定义redis key
+redis:
+  key:
+    prefix:
+      authCode: "portal:authCode:"
+    expire:
+      authCode: 120 # 验证码超期时间
+
